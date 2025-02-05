@@ -1,37 +1,13 @@
 "use client";
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { getDatabase, onValue, ref } from "firebase/database";
 import { GraduationCap, Users, BookOpen, School } from "lucide-react";
-import { useEffect } from "react";
-interface Student {
-  id: number;
-  name: string;
-  email: string;
-  studentId: string;
-  class: string;
-  speciality: string;
-  year: string;
-  phone: string;
-}
+
 export default function DashboardOverview() {
-  let studentsnum =0
-  const getstudents = ()=>{
-    const db = getDatabase();
-        const usersRef = ref(db, 'students');
-      
-      
-          onValue(usersRef, (snapshot) => {
-          const data = snapshot.val();
-          studentsnum = data ? Object.values(data).length : 0;
-  })}
-  useEffect(()=>{
-    getstudents()
-  })
   const stats = [
     {
       title: "Total Students",
-      value: studentsnum,
+      value: "2,856",
       icon: Users,
       description: "Active enrollments",
     },
